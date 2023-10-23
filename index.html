@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Base</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        :root {
+            box-sizing: border-box;
+        }
+
+
+
+        .recipes{
+            background-color: aquamarine;
+            padding: 0.5rem;
+            display: grid;
+            grid-template-rows: repeat(auto-fit, minmax(10rem, 1fr));
+
+            margin: 0 auto;
+        }
+
+        @media screen and (max-width: 426px) {
+            .recipes{
+                grid-template-rows: repeat(auto-fit, minmax(10rem, 1fr));
+                grid-template-columns: inherit ;
+                background-color: darkgreen;
+                max-width: 500px;
+                grid-auto-flow: dense;
+            }
+        }
+
+
+        @media screen and (min-width: 768px) {
+
+            .recipes{
+                grid-template-rows: inherit;
+                grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+                background-color: blue;
+                max-width: 80%;
+            }
+        }
+
+
+
+        .recipe-container{
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            margin: 3px;
+            border: 2px solid black ;
+        }
+
+        .recipe-container > h5.recipe-title {
+            font-family: arial, sans-serif;
+            font-size: 20pt;
+            margin: inherit;
+        }
+
+        .recipe-ingredients{
+            margin-top: 0.5rem;
+        }
+
+        .recipe-description{
+            margin-top: 0.5rem;
+        }
+
+    </style>
+</head>
+<body>
+<div id="root" class="container">
+
+</div>
+<script>
+    function Recipe (title,ingredients,description){
+        this.title = title;
+        this.ingredients = ingredients;
+        this.description = description;
+    }
+
+
+    const recipe1 = new Recipe("Spaghetti alla Carbonara",
+        [
+            "Spaghetti 320g",
+            "Tuorli (6 uova medie)",
+            "Guanciale 150g",
+            "Pecorino romano 320g"
+        ],
+        "Dove sono nati gli spaghetti alla Carbonara? Il Vicolo della Scrofa, per chi conosce Roma, è una delle stradine più caratteristiche e ricche di simboli. Proprio in una trattoria di questa strada, da cui il nome del vicolo, pare sia stata realizzata la prima carbonara, nel 1944. La storia più attendibile su questo primo piatto, infatti, racconta l'incontro tra gli ingredienti a disposizione dei soldati americani e la fantasia di un cuoco romano. Il risultato fu il prototipo degli spaghetti alla carbonara: uova, bacon (poi guanciale) e formaggio. Man a mano la ricetta è evoluta fino a quella che tutti conosciamo oggi e possiamo apprezzare a casa di amici romani veraci (e voraci!), nelle trattorie come nei ristoranti stellati della Capitale, in tutta Italia e all'estero, nelle innumerevoli versioni: con o senza pepe, con un tuorlo per persona o l'aggiunta di almeno un uovo intero, con guanciale o pancetta tesa.\n" +
+        "Il condimento per la carbonara si prepara in una manciata di minuti. Pensate che occorrono soltanto guanciale speziato tagliato a striscioline, una crema dorata a base di tuorli (nella nostra versione) e tanto Pecorino romano grattugiato al momento."
+    );
+    const recipe2 = new Recipe("Spaghetti all'Amatriciana",
+        [
+            "Spaghetti 320g",
+            "Guanciale 150g",
+            "Pecorino romano 320g",
+            "Vino bianco 50g",
+            "Sale fino q.b.",
+            "Pomodori pelati 400g",
+            "Olio extra vergine d'oliva",
+            "Peperoncino fresco"
+        ],
+        "Spaghetti all'amatriciana, l'invito a nozze per tutti gli appassionati di cucina laziale! Vi presentiamo la vera ricetta dell'amatriciana codificata e certificata dal Comune di Amatrice: spaghetti, guanciale di Amatrice, pomodori pelati e Pecorino Romano DOP. Si dice che questo famoso primo piatto nato ad Amatrice fosse il pasto principale dei pastori, ma originariamente era senza pomodoro e prendeva il nome di “gricia”. Il pomodoro fu aggiunto in seguito, quando venne importato dalle Americhe e il condimento prese il nome di Amatriciana. E’ quindi normale che una ricetta così antica e popolare si sia trasformata nel tempo assumendo le numerose varianti di cui ancora si discute al giorno d’oggi. Quella che vi proponiamo qui è la versione più diffusa e conosciuta, replicata e amata, preparata con ingredienti locali e di qualità. Perché pensiamo che in realtà la ricetta degli spaghetti all’Amatriciana non divida, bensì unisca in nome della bontà di una pietanza dall’animo semplice e dal carattere deciso… proprio come chi l’ha creata!");
+    const recipe3 = new Recipe("Spaghetti Cacio e Pepe",
+        [
+            "Spaghetti 320g",
+            "Pecorino romano stagionatura media, da grattugiare 200g",
+            "Pepe nero in grani 5g"
+        ],
+        "Si la vita è un mozzico, qui mozzichi bene\". Questa è una delle frasi tipiche che introducono i menù nelle trattorie o fraschette romane. Ma la Carbonara e l'Amatriciana, come gli spaghetti cacio e pepe, sono diventati oramai piatti simbolo dell'italianità, realizzati con ingredienti DOP legati alle tradizioni dei territori in cui sono nate. Un'eccellenza che dalle \"tovaglie a quadretti\" arriva nelle cucine dei grandi Chef, come nel caso degli spaghetti cacio, pepe e ricci di mare. Anche noi vogliamo rendere omaggio ad uno dei simboli del mangiar bene e genuino, mostrandovi come eseguire una perfetta cacio e pepe! La combinazione chimica di acqua e proteine del Pecorino, fondamentale per ottenere una crema senza grumi, i grani di pepe interi schiacciati al momento e tostati in padella per sprigionare tutto il loro profumo pungente, la pasta mantecata lentamente per assorbire tutto il sapore del Pecorino romano… e soprattutto, preparare e gustare: un'altra regola per assaporare al meglio gli spaghetti cacio e pepe! ");
+    const recipes = [recipe1, recipe2, recipe3]
+
+
+</script>
+<script type="text/babel">
+    const Container = document.querySelector("#root");
+    const GetTitle = ({title})=><h5 className="recipe-title">{title}</h5>;
+
+    const GetIngredients = ({ingredients})=>{
+        const ingredientsContainer = ingredients.map((ingredient, index)=><li key={index}>{ingredient}</li> )
+        return <div className="recipe-ingredients"><ul>{ingredientsContainer}</ul></div>
+    };
+
+    const GetDescription = ({description})=><div className="recipe-description">{description}</div>;
+
+
+    const GetRecipe = ({recipe})=><div className="recipe-container">
+         <GetTitle title={recipe.title}/>
+         <GetIngredients ingredients={recipe.ingredients}/>
+         <GetDescription description={recipe.description}/>
+     </div>;
+
+
+    const GetRecipes = ({recipes})=>recipes.map((recipe, index)=><GetRecipe recipe={recipe} key={index}/>);
+
+    const MainElement = ({recipes})=> <div className="recipes"><GetRecipes recipes={recipes}/></div>;
+
+
+    const RootElement = ReactDOM.createRoot(Container);
+    RootElement.render(<MainElement recipes={recipes}/>);
+</script>
+</body>
+</html>
